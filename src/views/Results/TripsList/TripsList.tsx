@@ -30,6 +30,7 @@ export default function TripsList(props: TripsListTypes) {
 
   return (
     <div>
+      <p>Results</p>
       <h1>Available trips from <strong>Paris</strong> to <strong>Lyon</strong></h1>
 
       <ul>
