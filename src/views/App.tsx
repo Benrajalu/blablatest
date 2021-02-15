@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './images/logo.svg';
 
 import styles from './App.module.scss';
 
+import { fetchTrips } from '../application/service';
+
 function App() {
+  useEffect(() => {
+    fetchTrips()
+      .then(result => console.log(result));
+  }, []);
   return (
     <div className={styles.App}>
       <header className={styles.Appheader}>
