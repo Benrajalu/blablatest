@@ -1,0 +1,17 @@
+@use '../../globalStyles/spacing';
+
+.empty {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: spacing.$XS;
+}
+
+.loader {
+  width: 30rem;
+  max-width: 90%;
+  margin-bottom: spacing.$S;
+  background: green;
+}
