@@ -46,7 +46,7 @@ export default function TripsList(props: TripsListTypes) {
         }
       </ul>
 
-      {showLoadMore && !isLoading && <button type='button' onClick={handleClick}>Load more</button>}
+      {showLoadMore && !isLoading && <button type="button" onClick={handleClick}>Load more</button>}
       {isLoading && <p>Loading...</p>}
     </div>
   )
