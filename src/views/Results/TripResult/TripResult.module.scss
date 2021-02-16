@@ -1,0 +1,58 @@
+@use '../../globalStyles/spacing';
+@use '../../globalStyles/font';
+@use '../../globalStyles/colors';
+
+.result {
+  padding: spacing.$L;
+  border-radius: 0.8rem;
+  background: colors.$white;
+  border-left: 4px solid colors.$lightest;
+  box-shadow: -0.2rem 0 0.8rem 0.1rem rgba(0, 0, 0, 0.1);
+  font: font.$copy;
+  color: colors.$darkest;
+
+  p {
+    margin-bottom: spacing.$M;
+
+    strong {
+      font: font.$copy_bold;
+    }
+  }
+
+  .detail {
+    color: colors.$light;
+  }
+
+  &:after {
+    content: '';
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 100%;
+    background: colors.$light;
+    left: 0;
+    top: 50%;
+    transform: translateX(50%) translateY(-50%);
+    position: absolute;
+    z-index: 2;
+  }
+
+  &:before {
+    content: '';
+    width: 1px;
+    height: 100%;
+    background: rgba(colors.$dark, 0.1);
+    left: 0;
+    top: 0;
+    transform: translateX(0.7rem);
+    position: absolute;
+    z-index: 1;
+  }
+
+  .link {
+    color: colors.$light;
+
+    &:hover {
+      color: colors.$dark;
+    }
+  }
+}

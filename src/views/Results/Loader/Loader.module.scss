@@ -1,16 +1,5 @@
 @use '../../globalStyles/spacing';
-@use '../../globalStyles/font';
 @use '../../globalStyles/colors';
-
-.empty {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: spacing.$XS;
-  width: 100%;
-}
 
 .loader {
   height: 1.8rem;
@@ -33,21 +22,6 @@
     background: colors.$light;
     width: 20%;
     z-index: 2;
-  }
-}
-
-.title {
-  font: font.$title_L;
-  color: colors.$darkest;
-  margin-bottom: spacing.$M;
-}
-
-.copy {
-  font: font.$copy;
-  color: colors.$dark;
-
-  &:not(:last-child) {
-    margin-bottom: spacing.$S;
   }
 }
 

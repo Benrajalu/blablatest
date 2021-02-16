@@ -4,6 +4,9 @@ import { pipe } from 'fp-ts/function';
 import * as Search from '../../../domain/search';
 import { fetchTrips } from '../../../application/service';
 import TripResult from '../TripResult/TripResult';
+import Loader from '../Loader/Loader';
+
+import styles from './TripsList.module.scss';
 
 type TripsListTypes = {
   trips: Search.Trips;
@@ -29,11 +32,14 @@ export default function TripsList(props: TripsListTypes) {
   }
 
   return (
-    <div>
-      <p>Results</p>
-      <h1>Available trips from <strong>Paris</strong> to <strong>Lyon</strong></h1>
+    <div className={styles.wrapper}>
+      <p className={styles.title}>Results</p>
+      
+      <h1 className={styles.subtitle}>
+        Available trips from <strong>Paris</strong> to <strong>Lyon</strong>
+      </h1>
 
-      <ul>
+      <ul className={styles.listing}>
         {
           pipe(
             collectedTrips,
@@ -44,10 +50,20 @@ export default function TripsList(props: TripsListTypes) {
             ))
           )
         }
-      </ul>
+         {showLoadMore && !isLoading && (
+          <li>
+            <button 
+              type="button" 
+              onClick={handleClick}
+              className={styles.loadMore}
+            >
+              Load more
+            </button>
+          </li>
+        )}
 
-      {showLoadMore && !isLoading && <button type="button" onClick={handleClick}>Load more</button>}
-      {isLoading && <p>Loading...</p>}
+        {isLoading && <li><Loader /></li>}
+      </ul>
     </div>
   )
 }
