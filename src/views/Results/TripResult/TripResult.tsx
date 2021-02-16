@@ -32,11 +32,19 @@ export default function TripResult({ trip }: { trip:Search.Trip }) {
         pipe(
           trip,
           Search.waypoints,
-          NonEmptyArrayFP.fromArray,
           OptionFP.fold(
-            () => <p>This is a direct trip</p>,
-            (waypoints) => <p>This trip has <strong>{waypoints.length} waypoints</strong></p>,
-          )
+            () => null,
+            (possibleWaypoints) => {
+              return pipe(
+                possibleWaypoints,
+                NonEmptyArrayFP.fromArray,
+                OptionFP.fold(
+                  () => <p>This is a direct trip</p>,
+                  (confirmedWaypoints) => <p>This trip has <strong>{confirmedWaypoints.length} waypoints</strong></p>,
+                )
+              )
+            }
+          ) 
         )
       }
 

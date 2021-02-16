@@ -25,7 +25,7 @@ export type Trip = {
   duration_in_seconds: number;
   price: { amount: string, currency: string; };
   vehicle?: Vehicle;
-  waypoints: Waypoint[];
+  waypoints?: Waypoint[];
 }
 
 export type Trips = Trip[];
@@ -50,9 +50,10 @@ export function trips(payload: TripsQueryPayload): Trips {
   );
 }
 
-export function waypoints(trip: Trip): Waypoints {
+export function waypoints(trip: Trip): OptionFP.Option<Waypoints> {
   return pipe(
     trip.waypoints,
+    OptionFP.fromNullable,
   );
 }
 
